@@ -1,5 +1,5 @@
 *DS_STORE
-app/controllers/auth_controller.rb
-log/developement.log
-tmp/pids/server.pid
-tmp/temp.jpg
+app\controllers\auth_controller.rb
+log\developement.log
+tmp\pids\server.pid
+tmp\temp.jpg
