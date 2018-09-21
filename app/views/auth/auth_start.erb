@@ -1,0 +1,5 @@
+<%= form_tag(:action => 'auth_finish') do|f| %>
+<a target="blank" href="<%=@auth_url%>">Flickr Authorize Link</a>
+<%= text_field_tag(:verify) %>
+<%= submit_tag %>
+<%- end %>

@@ -1,0 +1,36 @@
+
+  def transfrom
+
+    images = Rails.cache.read("current_images")
+    realname = params[:realname]
+    username = params[:username]
+    if realname
+      dirname = @@current_cache + realname
+    elsif username
+      dirname = @@current_cache + username
+    end
+    unless File.directory?(dirname)
+       FileUtils.mkdir_p(dirname)
+    end
+
+    images.each{|k,v|
+      if v == '.' or v == '..'
+        next
+      end
+      file_name = (File::join @@current_cache, k)
+      if realname
+        rpath = (File::join @@current_cache,realname, k)
+        if v.owner.realname == realname
+          FileUtils.mv(file_name, rpath)
+        end
+      elsif username
+      upath = (File::join @@current_cache,username, k)
+        if v.owner.username == username
+          FileUtils.mv(file_name, upath)
+        end
+      end
+
+    }
+    render :text => "done."
+
+  end

@@ -1,0 +1,5 @@
+<%= link_to "<<", :action => "pervous_page" %>
+<%= link_to ">>", :action => "next_page" %>&nbsp; <%=@index%><br/>
+<% @currentPhotos.each{|item| %>
+<span class="image_thumb"><a href="<%=item[:big]%>"><img src="<%=item[:thumbnail]%>"/></a></span>
+<%}%>

@@ -1,0 +1,39 @@
+
+  #require 'RMagick'
+  #include Magick
+  
+  
+  
+  def catalog
+
+    ret = Rails.cache.fetch("current_images"){|x| x = {}}
+
+    Dir.foreach(@@current_cache) {|x|
+      if x == '.' or x == '..'
+        next
+      end
+      file_name = (File::join @@current_cache, x)
+      thumb = (File::join @@current_cache, "thumb", x)
+      if !File.exist?(thumb)
+
+
+        begin
+        img = Image.read(file_name).first
+        thumbnail = img.thumbnail(img.columns*0.09, img.rows*0.09)
+        thumbnail.write(thumb)
+        rescue
+        end
+      end
+      if !ret[x]
+        temp = File.basename(file_name, ".*").split("_")
+        id = temp[temp.length - 1]
+        begin
+        ret[x]= flickr.photos.getInfo :photo_id => id
+        rescue
+        end
+      end
+      Rails.cache.write("current_images",ret)
+    }
+    render :text => "saved"
+
+  end
