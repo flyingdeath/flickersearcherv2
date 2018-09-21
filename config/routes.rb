@@ -22,6 +22,7 @@ Flickersearcherv2::Application.routes.draw do
   post '/auth/auth_finish', :to => "auth#auth_finish", :as => :auth_finish
 
 
+  root :to => "mainpage#interesting"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
