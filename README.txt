@@ -4,7 +4,7 @@ basic usage
   screen scaping javascirpt, for use with '/mainpage/batch' to supply the user id's 
   run from the web console inside the developer tools of the browser such as firefox 
   run on page 'people you follow'
-   https://www.flickr.com/people/<your user name or id >/contacts
+   https://www.flickr.com/people/(your user name or id )/contacts
  
 '/mainpage/search_nature'
     100 images tagged with nature
