@@ -4,10 +4,15 @@ basic usage
 
 To run, install ruby , ruby gems , ruby dev kit, gem ruby on rails 
 
+set api_key and shared_secret in /app/controllers/auth_controller.rb
+   sign up at https://www.flickr.com/services/apps/create/
+   
+   
 in the project directory run the following commands 
 
 bundle install
 rails server 
+
 
 access in the web browser assuming you use localhost, ie:
 
