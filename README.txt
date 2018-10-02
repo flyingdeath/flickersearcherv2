@@ -2,7 +2,7 @@ Ruby on Rails web server Project
 
 basic usage 
 
-to run install ruby , ruby gems , ruby dev kit, gem ruby on rails 
+To run, install ruby , ruby gems , ruby dev kit, gem ruby on rails 
 
 in the project directory run the following commands 
 
