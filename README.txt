@@ -1,4 +1,20 @@
+Ruby on Rails web server Project
+
 basic usage 
+
+to run install ruby , ruby gems , ruby dev kit, gem ruby on rails 
+
+in the project directory run the following commands 
+
+bundle install
+rails server 
+
+Routes description
+
+access in the web browser assuming you use localhost, ie:
+
+http://localhost:3000/mainpage/interesting
+
 
 '/auth/auth_start'
    force reauthorization comes in handly when system forigets your key 
@@ -33,3 +49,4 @@ basic usage
     
 (note: image ids are included at the end of the file name after the underscore )
     
+ 
