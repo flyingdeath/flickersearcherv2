@@ -9,12 +9,11 @@ in the project directory run the following commands
 bundle install
 rails server 
 
-Routes description
-
 access in the web browser assuming you use localhost, ie:
 
 http://localhost:3000/mainpage/interesting
 
+Routes description
 
 '/auth/auth_start'
    force reauthorization comes in handly when system forigets your key 
