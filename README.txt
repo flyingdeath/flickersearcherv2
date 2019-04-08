@@ -24,6 +24,8 @@ Routes description
    force reauthorization comes in handly when system forigets your key 
 '/search_nature'
     100 images tagged with nature
+'/getuser/:id'
+    500 images From user id 
 '/mainpage/interesting'
     100 images per page same category as flickr.com/explore
 '/mainpage/save_interesting'
