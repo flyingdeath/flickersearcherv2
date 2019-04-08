@@ -15,7 +15,9 @@ Flickersearcherv2::Application.routes.draw do
   get '/search_nature', :to => "mainpage#search_nature", :as => :search_nature
   get '/save_user', :to => "mainpage#save_user", :as => :save_user
   get '/mainpage/catalog', :to => "mainpage#catalog", :as => :catalog
+  get '/mainpage/saveEiffel', :to => "mainpage#saveEiffel", :as => :saveEiffel
   get '/mainpage/transfrom', :to => "mainpage#transfrom", :as => :transfrom
+  get '/mainpage/getuser/:id', :to => "mainpage#getuser", :as => :getuser
 
 
   get '/auth/auth_start', :to => "auth#auth_start", :as => :auth_start

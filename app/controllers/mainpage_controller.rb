@@ -67,6 +67,24 @@ class MainpageController < ApplicationController
     getCurrentPhotos
     render "list"
   end
+  def saveEiffel
+      @list   = flickr.photos.search(:text => "  Eiffel tower", :per_page => '500')
+      getCurrentPhotos
+      savelist
+      render :text => "saved"
+  end
+
+  
+    def getuser
+      session[:user_id] = params[:id]
+      save_user_id_core params[:id]
+      session[:list_index] = {:index => 1, :action => params[:action]}
+      @index = session[:list_index][:index]
+      getCurrentPhotos
+      render "list"
+  end
+  
+  
 
   def interesting
     @list   = flickr.interestingness.getList
@@ -142,16 +160,22 @@ class MainpageController < ApplicationController
     filename  = "temp.jpg"
     getCurrentPhotos
     fileUrl = URI.parse(@currentPhotos[0][:big])
-     begin
+     #begin
        Net::HTTP.start(fileUrl.host) do |http|
          resp = http.get(fileUrl.request_uri)
+         r = http.get(URI.parse(resp.header['location']))
+
          open((File::join Rails.root, "tmp/", filename), "wb") do |file|
-           file.write(resp.body)
+           file.write(r.body)
          end
        end
-     rescue StandardError => error
-     end
+     #rescue StandardError => error
+     #end
+     begin
      @exifrObj = EXIFR::JPEG.new((File::join Rails.root, "tmp/", filename))
+     rescue StandardError => error
+       @exifrObj = nil
+     end
   end
   
   
@@ -172,6 +196,10 @@ class MainpageController < ApplicationController
 
   def search_nature_position
     @list   = flickr.photos.search(:tags =>"nature", :page => session[:list_index][:index])
+  end
+  
+  def getuser_position
+    @list   = flickr.people.getPhotos(:user_id => session[:user_id], :safe_search => 1,:content_type => '7',:per_page => 500,:page => session[:list_index][:index])
   end
 
 
